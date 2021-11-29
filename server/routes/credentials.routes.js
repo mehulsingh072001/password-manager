@@ -1,10 +1,11 @@
 const express = require('express')
 const credentialsCtrl = require('../controllers/credentials.controller') 
+const verify = require('../verifyToken')
 
 const router = express.Router()
 
 router.route('/credentials')
-    .get(credentialsCtrl.get)
-    .post(credentialsCtrl.add)
+    .get(verify, credentialsCtrl.get)
+    .post(verify, credentialsCtrl.add)
 
 module.exports = router

@@ -8,6 +8,7 @@ router.route('/users')
     .get(userCtrl.list)
     .post(userCtrl.create)
 
-router.route('/users/:userId')
+router.route('/login')
+    .post(authCtrl.signin)
 
 module.exports = router
