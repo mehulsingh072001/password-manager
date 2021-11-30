@@ -11,4 +11,4 @@ const credentialSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Credentials', credentialSchema)
+module.exports = mongoose.model('credentials', credentialSchema)

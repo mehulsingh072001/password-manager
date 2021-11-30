@@ -5,12 +5,14 @@ const helmet = require('helmet')
 const cookieParser = require('cookie-parser')
 const userRoute = require('./routes/user.routes')
 const credentialsRoute = require('./routes/credentials.routes')
+var bodyParser = require('body-parser');
 
 const app = express()
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 //parse body params and attach them to req.body
 app.use(express.json())
-app.use(express.urlencoded({ extended: true}))
 app.use(cookieParser())
 
 //get current working directory
@@ -25,5 +27,9 @@ app.use(cors())
 app.use('/public', express.static(path.join(cwd, 'public')))
 app.use('/api', userRoute)
 app.use('/api', credentialsRoute)
+app.get('/api/test/:id', (req, res) => {
+    var id = req.params.id
+    res.json(id)
+})
 
 module.exports = app
