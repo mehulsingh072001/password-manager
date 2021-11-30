@@ -1,9 +1,12 @@
+const express = require('express')
 const User = require('../models/user.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
-const signin = async (req, res) => {
+const router = express.Router()
+
+router.post('/login', async (req, res) => {
     try {
         let user = await User.findOne({
             "email": req.body.email,
@@ -23,6 +26,6 @@ const signin = async (req, res) => {
             error: "Could not sign in"
         })
     }
-}
+})
 
-module.exports = {signin}
+module.exports = router

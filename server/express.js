@@ -3,8 +3,9 @@ const path = require('path')
 const cors = require('cors')
 const helmet = require('helmet')
 const cookieParser = require('cookie-parser')
-const userRoute = require('./routes/user.routes')
-const credentialsRoute = require('./routes/credentials.routes')
+const userRoute = require('./routes/user')
+const authRoute = require('./routes/auth')
+const credentialsRoute = require('./routes/credentials')
 var bodyParser = require('body-parser');
 
 const app = express()
@@ -26,10 +27,7 @@ app.use(cors())
 
 app.use('/public', express.static(path.join(cwd, 'public')))
 app.use('/api', userRoute)
+app.use('/api', authRoute)
 app.use('/api', credentialsRoute)
-app.get('/api/test/:id', (req, res) => {
-    var id = req.params.id
-    res.json(id)
-})
 
 module.exports = app

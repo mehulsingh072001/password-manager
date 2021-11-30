@@ -1,4 +1,5 @@
 const express = require('express')
+const verify = require('../verifyToken')
 const User = require('../models/user.model')
 const bcrypt = require('bcryptjs')
 
@@ -6,10 +7,9 @@ const router = express.Router()
 
 // router.route('/users')
 
-router.get('/user', (req, res) => {
+router.get('/users',  async (req, res) => {
     try {
-        let users = await User.find().select('name email updated created')
-        res.json(users)
+        await User.find().sort({date: -1}).then(users => res.json(users))
     }
     catch(err) {
         return res.status(400).json({
@@ -18,7 +18,7 @@ router.get('/user', (req, res) => {
     }
 })
 
-router.post('post', (req, res) => {
+router.post('/users', async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
@@ -42,7 +42,7 @@ router.post('post', (req, res) => {
 })
 
 
-router.get('/user/:userId', (req, res) => {
+router.get('/user/:userId', async (req, res) => {
     try {
         var id = req.params.userId
         let user = await User.findById(id)
@@ -51,8 +51,7 @@ router.get('/user/:userId', (req, res) => {
                 error: "User not found"
             })
         }
-        req.profile = user
-        next()
+        return res.json(user)
     }
     catch(err) {
         return res.status(400).json({
@@ -62,9 +61,9 @@ router.get('/user/:userId', (req, res) => {
 })
 
     
-router.get('/user/remove', (req, res) => {
+router.delete('/users', verify, async (req, res) => {
     try {
-        let user = req.body
+        let user = await User.findOne({name: req.body.name}) 
         let deletedUser = await user.remove()
         deletedUser.password = undefined
         res.json(deletedUser)
@@ -76,8 +75,4 @@ router.get('/user/remove', (req, res) => {
     }
 })
 
-const read = (req, res) => {
-    req.profile.password = undefined
-    return res.json(req.profile)
-}
 module.exports = router
