@@ -9,7 +9,9 @@ const router = express.Router()
 
 router.get('/users',  async (req, res) => {
     try {
-        await User.find().sort({date: -1}).then(users => res.json(users))
+        await User.find().sort({date: -1})
+            .populate('credentials')
+            .then(users => res.json(users))
     }
     catch(err) {
         return res.status(400).json({

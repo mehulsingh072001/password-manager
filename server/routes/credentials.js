@@ -27,12 +27,11 @@ router.post('/credentials', verify, async (req, res) => {
         // save credentials to database
         const savedCredentials = await credentials.save()
 
-        //save the user to databse
-        const user = await User.findOne({name: req.body.name}).populate('credentials')
-        res.json(user)
-
+        const user = await User.findOne({name: req.body.name})
+        user.credentials.push(savedCredentials._id)
+        const savedUser = await user.save()
         return res.status(200).json({
-            message: "Successfully added credentials!"
+            message: savedUser
         })
     }
     catch (err) {
