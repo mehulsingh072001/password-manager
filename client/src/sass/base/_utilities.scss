@@ -1,0 +1,33 @@
+.u-heading-2 {
+    display: flex;
+    align-items: center;
+    div{
+        background-color: black;
+        width: 10rem;
+        height: 1px;
+        width: 7.5rem;
+        margin-right: 1rem;
+    }
+}
+
+.u-margin-bottom-huge{
+    margin-bottom: 16rem !important;
+}
+
+.u-margin-top-huge{
+    margin-top: 16rem !important;
+}
+
+.u-margin-top-big{
+    margin-top: 6.4rem !important;
+}
+
+.u-margin-top-medium{
+    margin-top: 3.2rem !important;
+    @include respond(big-phone){
+    }
+}
+
+.u-margin-top-small{
+    margin-top: 1rem !important;
+}

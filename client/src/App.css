@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+html {
+  font-size: 62.5%; }
+  @media (max-width: 80em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 26.75em) {
+    html {
+      font-size: 40%; } }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+body {
+  /* Total borders or paddings are not added to total height of an element */
+  box-sizing: border-box;
+  padding: 0rem;
+  background-color: #F6F6F9;
+  font-family: "Poppins"; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.u-heading-2 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center; }
+  .u-heading-2 div {
+    background-color: black;
+    width: 10rem;
+    height: 1px;
+    width: 7.5rem;
+    margin-right: 1rem; }
+
+.u-margin-bottom-huge {
+  margin-bottom: 16rem !important; }
+
+.u-margin-top-huge {
+  margin-top: 16rem !important; }
+
+.u-margin-top-big {
+  margin-top: 6.4rem !important; }
+
+.u-margin-top-medium {
+  margin-top: 3.2rem !important; }
+
+.u-margin-top-small {
+  margin-top: 1rem !important; }
+
+.cta-register {
+  background-color: #071E3D;
+  width: 40.7rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 1.563rem;
   color: white;
-}
+  text-decoration: none;
+  font-family: "Poppins";
+  font-weight: 500;
+  border-radius: 9px; }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.login {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  grid-gap: 3rem;
+  height: 100vh; }
+  .login__form {
+    display: grid;
+    grid-gap: 2rem;
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+    align-content: center; }
+    .login__form input, .login__form button {
+      padding: 1.53rem 2rem;
+      width: 40rem;
+      border-radius: 9px;
+      font-size: 1.563rem;
+      font-family: "Poppins"; }
+    .login__form input {
+      background: #fcfcfc;
+      border: 1px solid #b6b6b6; }
+    .login__form--submit {
+      background-color: #1F4287;
+      font-weight: 600;
+      color: white;
+      cursor: pointer; }
+  .login .seprator {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; }
+    .login .seprator .line {
+      height: 1px;
+      background-color: black;
+      width: 17rem; }
+    .login .seprator p {
+      font-size: 1.953rem;
+      padding: 0 1.5rem; }

@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px;
+
+    @include respond(big-desktop)  {
+        font-size: 75%; //1rem = 12
+    }
+
+    @include respond(small-laptop)  {
+        font-size: 56.25%; //1rem = 9px
+    }
+
+    @include respond(tab-port)  {
+        font-size: 50%; //1rem = 8px
+    }
+
+    @include respond(big-phone)  {
+        font-size: 40%; //1rem = 8px
+    }
+
+}
+
+body {
+    /* Total borders or paddings are not added to total height of an element */
+    box-sizing: border-box;
+    padding: 0rem;
+    background-color: #F6F6F9;
+    font-family: $font_body;
+
+    @include respond(tab-port)  {
+        padding: 0;
+    }
+}
+
