@@ -7,7 +7,7 @@ const router = express.Router()
 
 // router.route('/users')
 
-router.get('/users',  async (req, res) => {
+router.get('/users',  verify, async (req, res) => {
     try {
         await User.find().sort({date: -1})
             .populate('credentials')
@@ -25,7 +25,7 @@ router.post('/users', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
     const user = new User({
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: hashedPassword
     })

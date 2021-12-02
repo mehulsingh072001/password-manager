@@ -22,11 +22,26 @@ body {
   /* Total borders or paddings are not added to total height of an element */
   box-sizing: border-box;
   padding: 0rem;
-  background-color: #F6F6F9;
   font-family: "Poppins"; }
   @media (max-width: 56.25em) {
     body {
       padding: 0; } }
+
+.col-head {
+  font-size: 1.953rem;
+  font-weight: 500;
+  margin-bottom: 2rem; }
+
+.col-data {
+  font-size: 1.463rem;
+  font-weight: 300; }
+
+.fa-key, .fa-lock {
+  font-size: 1.463rem;
+  margin: 0 1.5rem; }
+
+.new i {
+  font-size: 1.953rem; }
 
 .u-heading-2 {
   display: flex;
@@ -83,9 +98,10 @@ body {
     border: none;
     font-family: "Poppins";
     font-weight: 300; }
-  .nav__profile {
+  .nav__profile, .nav__logout {
     color: white;
-    font-size: 3.025rem; }
+    font-size: 3.025rem;
+    margin: 0 1rem; }
 
 .login {
   display: grid;
@@ -156,3 +172,31 @@ body {
       font-weight: 600;
       color: white;
       cursor: pointer; }
+
+.new {
+  position: fixed;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #21E6C1;
+  color: white;
+  left: 95%;
+  top: 90%;
+  cursor: pointer; }
+
+.dashboard {
+  padding: 10rem 0;
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); }
+  .dashboard .data {
+    background-color: #F6F6F6;
+    display: grid;
+    justify-content: space-around;
+    align-items: flex-end;
+    grid-gap: 5rem;
+    grid-template-columns: 10% 15% 20% max-content;
+    padding: 2rem 0;
+    border-radius: 9px; }

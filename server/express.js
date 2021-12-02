@@ -19,9 +19,6 @@ app.use(cookieParser())
 //get current working directory
 const cwd = process.cwd()
 
-//secure apps by setting various http headers
-app.use(helmet())
-
 //enable cors
 app.use(cors())
 

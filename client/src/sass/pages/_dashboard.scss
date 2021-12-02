@@ -1,0 +1,31 @@
+.new{
+    position: fixed;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    border: none;
+    background-color: $color_seconday_light;
+    color: white;
+    left: 95%;
+    top: 90%;
+    cursor: pointer;
+}
+
+.dashboard{
+    padding: 10rem 0;
+    width: 80%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .data{
+        background-color: $color_tertiary;
+        display: grid;
+        justify-content: space-around;
+        align-items: flex-end;
+        grid-gap: 5rem;
+        grid-template-columns: 10% 15% 20% max-content;
+        padding: 2rem 0;
+        border-radius: 9px;
+    }
+}
