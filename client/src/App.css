@@ -63,7 +63,29 @@ body {
   text-decoration: none;
   font-family: "Poppins";
   font-weight: 500;
-  border-radius: 9px; }
+  border-radius: 9px;
+  border: 1px solid #1F4287; }
+
+.nav {
+  align-items: center;
+  background-color: #071E3D;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 5rem; }
+  .nav__logo {
+    font-size: 2.441rem;
+    font-weight: 600;
+    color: white; }
+  .nav__search {
+    width: 30%;
+    padding: .8rem 2rem;
+    border-radius: 9px;
+    border: none;
+    font-family: "Poppins";
+    font-weight: 300; }
+  .nav__profile {
+    color: white;
+    font-size: 3.025rem; }
 
 .login {
   display: grid;
@@ -92,7 +114,8 @@ body {
       background-color: #1F4287;
       font-weight: 600;
       color: white;
-      cursor: pointer; }
+      cursor: pointer;
+      border: 1px solid #1F4287; }
   .login .seprator {
     display: flex;
     align-items: center;
@@ -104,3 +127,32 @@ body {
     .login .seprator p {
       font-size: 1.953rem;
       padding: 0 1.5rem; }
+
+.registration {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  grid-gap: 3rem;
+  height: 100vh; }
+  .registration__form {
+    display: grid;
+    grid-gap: 2rem;
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+    align-content: center; }
+    .registration__form input, .registration__form button {
+      padding: 1.53rem 2rem;
+      width: 40rem;
+      border-radius: 9px;
+      font-size: 1.563rem;
+      font-family: "Poppins"; }
+    .registration__form input {
+      background: #fcfcfc;
+      border: 1px solid #b6b6b6; }
+    .registration__form-- {
+      background-color: #1F4287;
+      font-weight: 600;
+      color: white;
+      cursor: pointer; }

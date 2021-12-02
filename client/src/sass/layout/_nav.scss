@@ -1,0 +1,27 @@
+.nav{
+    align-items: center;
+    background-color: $color_primary;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5rem;
+
+    &__logo{
+        font-size: 2.441rem;
+        font-weight: 600;
+        color: white;
+    }
+
+    &__search{
+        width: 30%;
+        padding: .8rem 2rem;
+        border-radius: 9px;
+        border: none;
+        font-family: $font_body;
+        font-weight: 300;
+    }
+    
+    &__profile{
+        color: white;
+        font-size: 3.025rem;
+    }
+}
