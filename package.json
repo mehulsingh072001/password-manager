@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "concurrently": "^6.4.0"
+  },
+  "name": "password-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "compile:sass": "npm run compile:sass --prefix client",
+    "server": "npm run dev --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"  \"npm run compile:sass\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehulsingh072001/password-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mehulsingh072001/password-manager/issues"
+  },
+  "homepage": "https://github.com/mehulsingh072001/password-manager#readme",
+  "description": ""
+}

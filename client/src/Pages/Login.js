@@ -8,23 +8,25 @@ function Login(){
   let navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [cookies, setCookies] = useCookies(["auth-token", "isAuthenticated"])
+  const [cookies, setCookies] = useCookies(["userId","auth", "isAuthenticated"])
 
-  const handleCookie = (token) => {
-    setCookies("auth-token", token, {path: "/"})
+  const handleCookie = (token, id) => {
+    setCookies("auth", token, {path: "/"})
+    setCookies("userId", id, {path: "/"})
   }
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    const url = 'http://localhost:3000'
+    const url = 'http://localhost:5000'
     const data = {
       email: username,
       password: password
     }
     try {
       //make axios post request
-      await axios.post(`${url}/api/login`, data).then(res => handleCookie(res.data), setCookies("isAuthenticated", true, {path: "/"}), navigate('/'))
-      
+      await axios.post(`${url}/api/login`, data)
+        .then(res => handleCookie(res.data.token, res.data.id), setCookies("isAuthenticated", true, {path: "/"}), navigate('/'))
+        .catch(err => console.log(err));
     }
 
     catch(err){

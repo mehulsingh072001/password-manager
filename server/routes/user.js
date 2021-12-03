@@ -10,7 +10,6 @@ const router = express.Router()
 router.get('/users',  verify, async (req, res) => {
     try {
         await User.find().sort({date: -1})
-            .populate('credentials')
             .then(users => res.json(users))
     }
     catch(err) {
@@ -44,10 +43,11 @@ router.post('/users', async (req, res) => {
 })
 
 
-router.get('/user/:userId', async (req, res) => {
+router.get('/user/:userId', verify, async (req, res) => {
     try {
         var id = req.params.userId
         let user = await User.findById(id)
+            .populate('credentials')
         if(!user){
             return res.status(400).json({
                 error: "User not found"

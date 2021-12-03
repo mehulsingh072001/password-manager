@@ -3,10 +3,10 @@ import React, {useState, createContext} from "react";
 export const GlobalContext = createContext([]);
 
 export const GlobalProvider=(props)=>{
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState()
   return(
     <div>
-      <GlobalContext.Provider value={[isAuthenticated, setIsAuthenticated]}>
+      <GlobalContext.Provider value={[user, setUser]}>
         {props.children}
       </GlobalContext.Provider>
     </div>

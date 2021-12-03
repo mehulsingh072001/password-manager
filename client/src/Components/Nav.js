@@ -3,7 +3,6 @@ import {useCookies} from 'react-cookie'
 function Nav(){
   const [cookies, setCookies, removeCookies] = useCookies(["isAuthenticated"])
   const destroyAuth = (e) => {
-    e.preventDefault()
     removeCookies('isAuthenticated')
   }
   return(
