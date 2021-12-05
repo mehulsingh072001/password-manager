@@ -13,21 +13,20 @@
 
 .dashboard{
     padding: 10rem 0;
-    width: 80%;
+    width: 60%;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%);
+
 
     .data{
         background-color: $color_tertiary;
-        display: grid;
-        justify-content: space-around;
-        align-items: flex-end;
-        grid-gap: 5rem;
-        grid-template-columns: 10% 15% 20% repeat(2, max-content);
-        padding: 2rem 0;
+        padding: 2rem 3rem;
+        text-align: left;
         border-radius: 9px;
-    }
-    .col-4{
+        width: 100%;
+        td, th{
+            padding: 1rem;
+        }
     }
 }

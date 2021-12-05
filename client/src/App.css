@@ -36,7 +36,7 @@ body {
   font-size: 1.463rem;
   font-weight: 300; }
 
-.fa-key, .fa-lock {
+.fa-key, .fa-lock, .fa-trash-alt {
   font-size: 1.463rem;
   margin: 0 1.5rem; }
 
@@ -80,6 +80,31 @@ body {
   font-weight: 500;
   border-radius: 9px;
   border: 1px solid #1F4287; }
+
+.addnew {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  z-index: 2; }
+  .addnew .cancel {
+    position: absolute;
+    left: 90%;
+    font-size: 3.815rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer; }
+  .addnew__modal {
+    height: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%; }
+    .addnew__modal form {
+      display: grid;
+      width: max-content; }
 
 .nav {
   align-items: center;
@@ -187,16 +212,15 @@ body {
 
 .dashboard {
   padding: 10rem 0;
-  width: 80%;
+  width: 60%;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); }
+  transform: translate(-50%); }
   .dashboard .data {
     background-color: #F6F6F6;
-    display: grid;
-    justify-content: space-around;
-    align-items: flex-end;
-    grid-gap: 5rem;
-    grid-template-columns: 10% 15% 20% repeat(2, max-content);
-    padding: 2rem 0;
-    border-radius: 9px; }
+    padding: 2rem 3rem;
+    text-align: left;
+    border-radius: 9px;
+    width: 100%; }
+    .dashboard .data td, .dashboard .data th {
+      padding: 1rem; }
