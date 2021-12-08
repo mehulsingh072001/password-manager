@@ -32,29 +32,29 @@ function Dashboard() {
   return(
     <div>
       <Nav/>
-      <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button>
-      {showAdd===true ? <AddNew/> : console.log('null')}
-      <div className="dashboard">
-          <table className="data">
-            <tr className="u-margin-bottom-big">
-              <th className="col-head">For</th>
-              <th className="col-head">Username</th>
-              <th className="col-head">Password</th>
-            </tr>
-            {cred.map(d => 
-              <tr className="col-1">
-                <td><p className="col-data">Gmail</p></td>
-                <td><p className="col-data">{d.username}</p></td>
-                <td><p className="col-data">{d.password}</p></td>
-                <td>
-                  <button><i className="fas fa-key"></i></button>
-                  <button><i className="fas fa-lock"></i></button>
-                  <button onClick={() => deleteCred(d._id)}><i className="far fa-trash-alt"></i></button>
-                </td>
-              </tr>
-            )}
-          </table>
-      </div>
+      {/* <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button> */}
+      {/* {showAdd===true ? <AddNew/> : console.log('null')} */}
+      {/* <div className="dashboard"> */}
+      {/*     <table className="data"> */}
+      {/*       <tr className="u-margin-bottom-big"> */}
+      {/*         <th className="col-head">For</th> */}
+      {/*         <th className="col-head">Username</th> */}
+      {/*         <th className="col-head">Password</th> */}
+      {/*       </tr> */}
+      {/*       {cred.map(d => */} 
+      {/*         <tr className="col-1"> */}
+      {/*           <td><p className="col-data">Gmail</p></td> */}
+      {/*           <td><p className="col-data">{d.username}</p></td> */}
+      {/*           <td><p className="col-data">{d.password}</p></td> */}
+      {/*           <td> */}
+      {/*             <button><i className="fas fa-key"></i></button> */}
+      {/*             <button><i className="fas fa-lock"></i></button> */}
+      {/*             <button onClick={() => deleteCred(d._id)}><i className="far fa-trash-alt"></i></button> */}
+      {/*           </td> */}
+      {/*         </tr> */}
+      {/*       )} */}
+      {/*     </table> */}
+      {/* </div> */}
     </div>
   )
 }

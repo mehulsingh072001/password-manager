@@ -106,27 +106,12 @@ body {
       display: grid;
       width: max-content; }
 
-.nav {
-  align-items: center;
-  background-color: #071E3D;
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem 5rem; }
-  .nav__logo {
-    font-size: 2.441rem;
-    font-weight: 600;
-    color: white; }
-  .nav__search {
-    width: 30%;
-    padding: .8rem 2rem;
-    border-radius: 9px;
-    border: none;
-    font-family: "Poppins";
-    font-weight: 300; }
-  .nav__profile, .nav__logout {
-    color: white;
-    font-size: 3.025rem;
-    margin: 0 1rem; }
+.nav .logo {
+  width: 20rem; }
+  .nav .logo .cls-1 {
+    fill: #fff; }
+  .nav .logo path {
+    fill: red; }
 
 .login {
   display: grid;
