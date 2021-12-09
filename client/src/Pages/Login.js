@@ -34,7 +34,9 @@ function Login(){
           console.log('Auth Failed')
         }
       }).catch((err) => {
-        console.log(err.response.status)
+        if(err.response.status===404){
+          alert("User not Found")
+        }
       })
       
     }

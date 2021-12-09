@@ -1,5 +1,5 @@
 import {useEffect, useState, useContext} from 'react';
-import Nav from '../Components/Nav'
+import Sidebar from '../Components/Sidebar';
 import axios from 'axios'
 import { useCookies } from 'react-cookie';
 import AddNew from '../Components/AddNew';
@@ -31,7 +31,7 @@ function Dashboard() {
 
   return(
     <div>
-      <Nav/>
+      <Sidebar/>
       {/* <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button> */}
       {/* {showAdd===true ? <AddNew/> : console.log('null')} */}
       {/* <div className="dashboard"> */}

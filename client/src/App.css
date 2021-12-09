@@ -48,6 +48,16 @@ body {
   color: white;
   font-size: 1.25rem; }
 
+.sidebar__links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.953rem;
+  font-weight: 300; }
+
+.sidebar__profile .name {
+  color: white;
+  font-size: 1.563rem; }
+
 .u-heading-2 {
   display: flex;
   align-items: center; }
@@ -130,6 +140,36 @@ body {
     list-style: none; }
     .nav__links--link:not(:first-child) {
       margin-left: 3rem; }
+
+.sidebar {
+  width: 12%;
+  padding: 4rem 3rem;
+  background-color: #283845;
+  height: 100vh;
+  position: fixed; }
+  .sidebar__logo {
+    width: 90%; }
+    .sidebar__logo path {
+      fill: white; }
+    .sidebar__logo circle {
+      fill: white; }
+    .sidebar__logo .cls-1 {
+      fill: black; }
+  .sidebar__links {
+    position: relative;
+    top: 10%;
+    list-style: none; }
+    .sidebar__links--link:not(:first-child) {
+      margin-top: 2rem; }
+    .sidebar__links--link .fa-key {
+      margin: 0; }
+    .sidebar__links--link i, .sidebar__links--link .fa-key {
+      margin-right: 1rem; }
+  .sidebar__profile {
+    top: 95%;
+    position: absolute; }
+    .sidebar__profile i {
+      margin-right: 1rem; }
 
 .login {
   display: grid;
