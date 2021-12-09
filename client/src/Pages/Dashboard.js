@@ -32,7 +32,6 @@ function Dashboard() {
   return(
     <div>
       <Sidebar/>
-      {/* <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button> */}
       {/* {showAdd===true ? <AddNew/> : console.log('null')} */}
       {/* <div className="dashboard"> */}
       {/*     <table className="data"> */}
@@ -55,6 +54,30 @@ function Dashboard() {
       {/*       )} */}
       {/*     </table> */}
       {/* </div> */}
+      <div className="dashboard">
+      <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button>
+        <div className="searchbar">
+          <input type="search" placeholder="Search..."/>
+        </div>
+
+        <div className="dashboard__data">
+          <div className="dashboard__data--card">
+            <p>G</p>
+          </div>
+          <div className="dashboard__data--card">
+            hello
+          </div>
+          <div className="dashboard__data--card">
+            hello
+          </div>
+          <div className="dashboard__data--card">
+            hello
+          </div>
+          <div className="dashboard__data--card">
+            hello
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

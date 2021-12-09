@@ -22,7 +22,8 @@ body {
   /* Total borders or paddings are not added to total height of an element */
   box-sizing: border-box;
   padding: 0rem;
-  font-family: "Poppins"; }
+  font-family: "Poppins";
+  background-color: #F3F3F3; }
   @media (max-width: 56.25em) {
     body {
       padding: 0; } }
@@ -247,23 +248,34 @@ body {
   width: 6rem;
   border-radius: 50%;
   border: none;
-  background-color: #21E6C1;
+  background-color: #278EA5;
   color: white;
   left: 95%;
   top: 90%;
   cursor: pointer; }
 
 .dashboard {
-  padding: 10rem 0;
-  width: 60%;
+  padding: 4rem 0;
+  width: 88%;
+  right: 0;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%); }
-  .dashboard .data {
-    background-color: #F6F6F6;
-    padding: 2rem 3rem;
-    text-align: left;
-    border-radius: 9px;
-    width: 100%; }
-    .dashboard .data td, .dashboard .data th {
-      padding: 1rem; }
+  height: 100%; }
+  .dashboard .searchbar {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%); }
+    .dashboard .searchbar input {
+      width: 90rem;
+      background-color: #ECECEC;
+      border: none;
+      padding: 1.5rem 3rem;
+      border-radius: 10px; }
+  .dashboard__data {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    grid-gap: 2rem;
+    justify-content: center;
+    margin-top: 10%; }
+    .dashboard__data--card {
+      background-color: white;
+      border-radius: 10px; }

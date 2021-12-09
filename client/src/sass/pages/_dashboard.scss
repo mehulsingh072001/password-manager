@@ -4,7 +4,7 @@
     width: 6rem;
     border-radius: 50%;
     border: none;
-    background-color: $color_seconday_light;
+    background-color: $color_seconday;
     color: white;
     left: 95%;
     top: 90%;
@@ -12,21 +12,34 @@
 }
 
 .dashboard{
-    padding: 10rem 0;
-    width: 60%;
+    padding: 4rem 0;
+    width: 88%;
+    right: 0;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    height: 100%;
+    .searchbar{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        input{
+            width: 90rem;
+            background-color: $color_tertiary_dark;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+        }
+    }
 
 
-    .data{
-        background-color: $color_tertiary;
-        padding: 2rem 3rem;
-        text-align: left;
-        border-radius: 9px;
-        width: 100%;
-        td, th{
-            padding: 1rem;
+    &__data{
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        grid-gap: 2rem;
+        justify-content: center;
+        margin-top: 10%;
+        &--card{
+            background-color: white;
+            border-radius: 10px;
         }
     }
 }
