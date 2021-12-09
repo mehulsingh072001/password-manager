@@ -9,7 +9,7 @@ router.delete('/credentials/:credId', verify, async (req, res) => {
     try {
         let credential = await Credentials.findById(req.params.credId) 
         let deletedUser = await credential.remove()
-        res.json(deletedUser)
+        return res.json(deletedUser)
     }
     catch(err) {
         return res.status(400).json({
@@ -32,7 +32,7 @@ router.post('/credentials/:userId',  async (req, res) => {
         const user = await User.findById(id)
         user.credentials.push(savedCredentials._id)
         const savedUser = await user.save()
-        return res.status(200).json({
+        return res.status(201).json({
             message: savedUser
         })
     }

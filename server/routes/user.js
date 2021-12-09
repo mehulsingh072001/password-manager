@@ -31,7 +31,7 @@ router.post('/users', async (req, res) => {
 
     try {
         await user.save()
-        return res.status(200).json({
+        return res.status(201).json({
             message: "Successfully signed up!"
         })
     }
@@ -49,7 +49,7 @@ router.get('/user/:userId', verify, async (req, res) => {
         let user = await User.findById(id)
             .populate('credentials')
         if(!user){
-            return res.status(400).json({
+            return res.status(404).json({
                 error: "User not found"
             })
         }
@@ -57,7 +57,7 @@ router.get('/user/:userId', verify, async (req, res) => {
     }
     catch(err) {
         return res.status(400).json({
-            error: "Could not retrieve user"
+            error: err
         })
     }
 })
@@ -68,7 +68,7 @@ router.delete('/users', verify, async (req, res) => {
         let user = await User.findOne({name: req.body.name}) 
         let deletedUser = await user.remove()
         deletedUser.password = undefined
-        res.json(deletedUser)
+        res.json(deletedUser).status(201)
     }
     catch(err) {
         return res.status(400).json({
