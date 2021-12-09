@@ -1,11 +1,28 @@
 .nav{
+    background-color: $color_primary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
     .logo{
-        width: 20rem;
+        width: 15rem;
+        circle{
+            fill: white;
+        }
         .cls-1{
-            fill: #fff;
+            fill: $color_primary;
         }
         path{
-            fill: red;
+            fill: white;
+        }
+    }
+    &__links{
+        display: flex;
+        list-style: none;
+        &--link{
+            &:not(:first-child){
+                margin-left: 3rem;
+            }
         }
     }
 }

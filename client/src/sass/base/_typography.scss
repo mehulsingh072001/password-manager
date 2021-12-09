@@ -20,3 +20,14 @@
     }
 }
 
+.nav{
+    &__links{
+        &--link{
+            a{
+                text-decoration: none;
+                color: white;
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

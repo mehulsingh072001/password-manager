@@ -7,6 +7,11 @@ function Nav(){
   }
   return(
     <nav className="nav">
+      <ul className="nav__links">
+        <li className="nav__links--link"><a href="">Pricing</a></li>
+        <li className="nav__links--link"><a href="">Downloads</a></li>
+      </ul>
+
       <svg className="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 916.09 245.31">
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
@@ -24,14 +29,10 @@ function Nav(){
       </svg>
 
       <ul className="nav__links">
-        <li className="nav__links--link">Recent</li>
-        <li className="nav__links--link">Folders</li>
-        <li className="nav__links--link">Passwords</li>
-        <li className="nav__links--link">Favourites</li>
+        <li className="nav__links--link"><a href="">Terms Of Use</a></li>
+        <li className="nav__links--link"><a href="">Privacy Policy</a></li>
       </ul>
 
-      <div className="nav__profile">
-      </div>
     </nav>
   )
 }

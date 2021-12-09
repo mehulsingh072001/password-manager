@@ -43,6 +43,11 @@ body {
 .new i {
   font-size: 1.953rem; }
 
+.nav__links--link a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.25rem; }
+
 .u-heading-2 {
   display: flex;
   align-items: center; }
@@ -69,7 +74,7 @@ body {
   margin-top: 1rem !important; }
 
 .cta-register {
-  background-color: #071E3D;
+  background-color: #283845;
   width: 40.7rem;
   padding: 1.5rem 2rem;
   text-align: center;
@@ -79,7 +84,7 @@ body {
   font-family: "Poppins";
   font-weight: 500;
   border-radius: 9px;
-  border: 1px solid #1F4287; }
+  border: 1px solid #278EA5; }
 
 .addnew {
   height: 100vh;
@@ -106,12 +111,25 @@ body {
       display: grid;
       width: max-content; }
 
-.nav .logo {
-  width: 20rem; }
-  .nav .logo .cls-1 {
-    fill: #fff; }
-  .nav .logo path {
-    fill: red; }
+.nav {
+  background-color: #283845;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem; }
+  .nav .logo {
+    width: 15rem; }
+    .nav .logo circle {
+      fill: white; }
+    .nav .logo .cls-1 {
+      fill: #283845; }
+    .nav .logo path {
+      fill: white; }
+  .nav__links {
+    display: flex;
+    list-style: none; }
+    .nav__links--link:not(:first-child) {
+      margin-left: 3rem; }
 
 .login {
   display: grid;
@@ -137,11 +155,11 @@ body {
       background: #fcfcfc;
       border: 1px solid #b6b6b6; }
     .login__form--submit {
-      background-color: #1F4287;
+      background-color: #278EA5;
       font-weight: 600;
       color: white;
       cursor: pointer;
-      border: 1px solid #1F4287; }
+      border: 1px solid #278EA5; }
   .login .seprator {
     display: flex;
     align-items: center;
@@ -178,7 +196,7 @@ body {
       background: #fcfcfc;
       border: 1px solid #b6b6b6; }
     .registration__form-- {
-      background-color: #1F4287;
+      background-color: #278EA5;
       font-weight: 600;
       color: white;
       cursor: pointer; }

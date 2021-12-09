@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import Nav from '../Components/Nav'
 
 function Register(){
   const [username, setUsername] = useState('')

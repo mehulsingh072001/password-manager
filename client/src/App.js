@@ -13,14 +13,13 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login/>}/>
           <Route exact path="/register" element={<Register/>}/>
-          <Route exact path="/" element={<Dashboard/>}/>
-          {/* <Route exact path="/" */} 
-          {/*   element={ */}
-          {/*     <ProtectedRoute redirectTo="/login"> */}
-          {/*       <Dashboard/> */}
-          {/*     </ProtectedRoute> */}
-          {/*   } */}
-          {/* /> */}
+          <Route exact path="/" 
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <Dashboard/>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </GlobalProvider>
