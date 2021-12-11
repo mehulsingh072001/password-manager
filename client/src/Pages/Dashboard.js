@@ -32,51 +32,31 @@ function Dashboard() {
   return(
     <div>
       <Sidebar/>
-      {/* {showAdd===true ? <AddNew/> : console.log('null')} */}
-      {/* <div className="dashboard"> */}
-      {/*     <table className="data"> */}
-      {/*       <tr className="u-margin-bottom-big"> */}
-      {/*         <th className="col-head">For</th> */}
-      {/*         <th className="col-head">Username</th> */}
-      {/*         <th className="col-head">Password</th> */}
-      {/*       </tr> */}
-      {/*       {cred.map(d => */} 
-      {/*         <tr className="col-1"> */}
-      {/*           <td><p className="col-data">Gmail</p></td> */}
-      {/*           <td><p className="col-data">{d.username}</p></td> */}
-      {/*           <td><p className="col-data">{d.password}</p></td> */}
-      {/*           <td> */}
-      {/*             <button><i className="fas fa-key"></i></button> */}
-      {/*             <button><i className="fas fa-lock"></i></button> */}
-      {/*             <button onClick={() => deleteCred(d._id)}><i className="far fa-trash-alt"></i></button> */}
-      {/*           </td> */}
-      {/*         </tr> */}
-      {/*       )} */}
-      {/*     </table> */}
-      {/* </div> */}
-      <div className="dashboard">
       <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button>
-        <div className="searchbar">
-          <input type="search" placeholder="Search..."/>
-        </div>
-
-        <div className="dashboard__data">
-          <div className="dashboard__data--card">
-            <p>G</p>
-          </div>
-          <div className="dashboard__data--card">
-            hello
-          </div>
-          <div className="dashboard__data--card">
-            hello
-          </div>
-          <div className="dashboard__data--card">
-            hello
-          </div>
-          <div className="dashboard__data--card">
-            hello
-          </div>
-        </div>
+      {showAdd===true ? <AddNew/> : console.log('null')}
+      <div className="dashboard">
+      <div className="searchbar">
+        <input type="search" placeholder="Search..."/>
+      </div>
+          <table className="data">
+            <tr className="u-margin-bottom-big">
+              <th className="col-head">For</th>
+              <th className="col-head">Username</th>
+              <th className="col-head">Password</th>
+            </tr>
+            {cred.map(d => 
+              <tr className="col-1">
+                <td><p className="col-data">Gmail</p></td>
+                <td><p className="col-data">{d.username}</p></td>
+                <td><p className="col-data">{d.password}</p></td>
+                <td>
+                  <button><i className="fas fa-key"></i></button>
+                  <button><i className="fas fa-lock"></i></button>
+                  <button onClick={() => deleteCred(d._id)}><i className="far fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            )}
+          </table>
       </div>
     </div>
   )

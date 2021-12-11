@@ -105,7 +105,8 @@ body {
   z-index: 2; }
   .addnew .cancel {
     position: absolute;
-    left: 90%;
+    left: 60%;
+    top: 20%;
     font-size: 3.815rem;
     background: none;
     border: none;
@@ -120,7 +121,18 @@ body {
     height: 80%; }
     .addnew__modal form {
       display: grid;
-      width: max-content; }
+      width: max-content;
+      grid-gap: 1rem; }
+      .addnew__modal form input {
+        width: 30rem;
+        border-radius: 10px;
+        padding: 1rem 2rem; }
+      .addnew__modal form .submit {
+        padding: 1rem 2rem;
+        background-color: #278EA5;
+        border-radius: 10px;
+        border-color: #278EA5;
+        color: white; }
 
 .nav {
   background-color: #283845;
@@ -248,18 +260,19 @@ body {
   width: 6rem;
   border-radius: 50%;
   border: none;
-  background-color: #278EA5;
+  background-color: #21E6C1;
   color: white;
   left: 95%;
   top: 90%;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 1; }
 
 .dashboard {
-  padding: 4rem 0;
+  padding: 3rem 0;
   width: 88%;
+  height: 100%;
   right: 0;
-  position: absolute;
-  height: 100%; }
+  position: absolute; }
   .dashboard .searchbar {
     position: absolute;
     left: 50%;
@@ -270,12 +283,20 @@ body {
       border: none;
       padding: 1.5rem 3rem;
       border-radius: 10px; }
-  .dashboard__data {
-    display: grid;
-    grid-template-columns: repeat(4, max-content);
-    grid-gap: 2rem;
-    justify-content: center;
-    margin-top: 10%; }
-    .dashboard__data--card {
-      background-color: white;
-      border-radius: 10px; }
+  .dashboard .data {
+    position: absolute;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F3F3F3;
+    text-align: left;
+    margin-top: 10rem;
+    border-radius: 10px;
+    width: 70%; }
+    .dashboard .data td, .dashboard .data th {
+      padding: 1rem; }
+    .dashboard .data button {
+      background-color: transparent;
+      border: none; }
+    .dashboard .data .fa-trash-alt {
+      color: red; }

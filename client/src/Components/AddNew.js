@@ -41,9 +41,9 @@ function AddNew(){
         <div className="addnew__content">
           <form>
             <input type="text" onChange={(e) => setLabel(e.target.value)} placeholder="Label" />
-            <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="username" />
-            <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
-            <button onClick={handleSubmit}>Submit</button>
+            <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Username/Email" />
+            <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            <button className="submit" onClick={handleSubmit}>Submit</button>
           </form>
         </div>
       </div>
