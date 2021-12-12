@@ -44,7 +44,7 @@ function Dashboard() {
               <th className="col-head">Username</th>
               <th className="col-head">Password</th>
             </tr>
-            {cred.map(d => 
+            {cred.length > 0 ? cred.map(d => 
               <tr className="col-1">
                 <td><p className="col-data">Gmail</p></td>
                 <td><p className="col-data">{d.username}</p></td>
@@ -55,7 +55,7 @@ function Dashboard() {
                   <button onClick={() => deleteCred(d._id)}><i className="far fa-trash-alt"></i></button>
                 </td>
               </tr>
-            )}
+            ) : console.log("nothing")}
           </table>
       </div>
     </div>

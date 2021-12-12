@@ -5,8 +5,6 @@ const bcrypt = require('bcryptjs')
 
 const router = express.Router()
 
-// router.route('/users')
-
 router.get('/users',  verify, async (req, res) => {
     try {
         await User.find().sort({date: -1})
@@ -47,7 +45,14 @@ router.get('/user/:userId', verify, async (req, res) => {
     try {
         var id = req.params.userId
         let user = await User.findById(id)
-            .populate('credentials')
+            .populate(
+                {
+                    path: 'folders',
+                    populate: {
+                        path: 'credentials'
+                    }
+                }
+            )
         if(!user){
             return res.status(404).json({
                 error: "User not found"
