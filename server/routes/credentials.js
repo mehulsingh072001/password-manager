@@ -6,16 +6,37 @@ const User = require('../models/user.model')
 
 const router = express.Router()
 
-router.delete('/credentials/:credId', verify, async (req, res) => {
-    try {
-        let credential = await Credentials.findById(req.params.credId) 
-        let deletedUser = await credential.remove()
-        return res.json(deletedUser)
+router.delete('/credentials/:credId/:userId', verify, async (req, res) => {
+    const id = req.params.userId
+    if(req.body.folder){
+        try {
+            let credential = await Credentials.findById(req.params.credId) 
+            let user = await User.findById(id)
+            let folder = await Folders.findOne({'name': req.body.folder})
+            let deletedUser = await credential.remove()
+            folder.credentials.pull(req.params.credId)
+            user.credentials.pull(req.params.credId)
+            return res.json(deletedUser)
+        }
+        catch(err) {
+            return res.status(400).json({
+                error: err
+            })
+        }
     }
-    catch(err) {
-        return res.status(400).json({
-            error: err
-        })
+    else{
+        try {
+            let credential = await Credentials.findById(req.params.credId) 
+            let user = await User.findById(id)
+            let deletedUser = await credential.remove()
+            user.credentials.pull(req.params.credId)
+            return res.json(deletedUser)
+        }
+        catch(err) {
+            return res.status(400).json({
+                error: err
+            })
+        }
     }
 })
 

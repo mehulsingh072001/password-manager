@@ -30,4 +30,20 @@ router.post('/folder/:userId', verify, async (req, res) => {
     }
 })
 
+router.delete('/credentials/:foldId/:userId', verify, async (req, res) => {
+    const id = req.params.userId
+    try {
+        let folder = await Folders.findById(req.params.foldId) 
+        let user = await User.findById(id)
+        let deletedUser = await folder.remove()
+        user.folders.pull(req.params.foldId)
+        return res.json(deletedUser)
+    }
+    catch(err) {
+        return res.status(400).json({
+            error: err
+        })
+    }
+})
+
 module.exports = router
