@@ -5,7 +5,7 @@ const User = require('../models/user.model')
 
 const router = express.Router()
 
-router.post('/folder/:userId', async (req, res) => {
+router.post('/folder/:userId', verify, async (req, res) => {
     const id = req.params.userId
     const folders = new Folders({
         name: req.body.name

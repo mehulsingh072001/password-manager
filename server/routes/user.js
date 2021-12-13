@@ -40,16 +40,15 @@ router.post('/users', async (req, res) => {
     }
 })
 
-
 router.get('/user/:userId', verify, async (req, res) => {
     try {
         var id = req.params.userId
         let user = await User.findById(id)
             .populate(
                 {
-                    path: 'folders',
+                    path: 'folders credentials',
                     populate: {
-                        path: 'credentials'
+                       path: 'credentials'
                     }
                 }
             )
@@ -67,10 +66,10 @@ router.get('/user/:userId', verify, async (req, res) => {
     }
 })
 
-    
-router.delete('/users', verify, async (req, res) => {
+router.delete('/user/:userId', verify, async (req, res) => {
     try {
-        let user = await User.findOne({name: req.body.name}) 
+        const id = req.params.userId
+        let user = await User.findById(kd) 
         let deletedUser = await user.remove()
         deletedUser.password = undefined
         res.json(deletedUser).status(201)

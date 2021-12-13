@@ -8,7 +8,7 @@ import { GlobalContext } from '../GlobalProvider';
 function Dashboard() {
   const url = 'http://localhost:5000/api'
   const [cookies, setCookies] = useCookies(['userId, auth'])
-  const [cred, setCred] = useState([])
+  const [folder, setFolder] = useState([])
   const {user, add} = useContext(GlobalContext)
   const [showAdd, setShowAdd] = add
 
@@ -18,7 +18,7 @@ function Dashboard() {
 
   const data = async () => {
     await axios.get(`${url}/user/${cookies.userId}`, {headers:{Bearer: cookies.auth}})
-      .then((response) => {setCred(response.data.credentials);})
+      .then((response) => {setFolder(response.data.folders);})
   }
 
   const toggle = () => {
@@ -44,18 +44,18 @@ function Dashboard() {
               <th className="col-head">Username</th>
               <th className="col-head">Password</th>
             </tr>
-            {cred.length > 0 ? cred.map(d => 
+            {folder.map(d => 
               <tr className="col-1">
                 <td><p className="col-data">Gmail</p></td>
-                <td><p className="col-data">{d.username}</p></td>
-                <td><p className="col-data">{d.password}</p></td>
+                <td><p className="col-data">{d.credentials[0].username}</p></td>
+                <td><p className="col-data">{d.credentials[0].password}</p></td>
                 <td>
                   <button><i className="fas fa-key"></i></button>
                   <button><i className="fas fa-lock"></i></button>
-                  <button onClick={() => deleteCred(d._id)}><i className="far fa-trash-alt"></i></button>
+                  <button onClick={() => deleteCred(d.credentials[0]._id)}><i className="far fa-trash-alt"></i></button>
                 </td>
               </tr>
-            ) : console.log("nothing")}
+            )}
           </table>
       </div>
     </div>
