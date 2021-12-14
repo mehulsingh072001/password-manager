@@ -32,7 +32,7 @@ body {
     box-sizing: border-box;
     padding: 0rem;
     font-family: $font_body;
-    background-color: $color_tertiary;
+    background-color: $color_tertiary_dark;
 
     @include respond(tab-port)  {
         padding: 0;

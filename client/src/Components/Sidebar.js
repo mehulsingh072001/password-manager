@@ -23,7 +23,6 @@ function Sidebar(){
         {/* <li className="sidebar__links--link"><a href=""><i class="fas fa-history"></i>Recent</a></li> */}
         <li className="sidebar__links--link"><Link to="/"><i class="fas fa-key"></i>Passwords</Link></li>
         <li className="sidebar__links--link"><Link to="/folders"><i class="fas fa-folder"></i>Folders</Link></li>
-        <li className="sidebar__links--link"><Link to="/favourites"><i class="far fa-star"></i>Favourites</Link></li>
       </ul>
 
       <div className="sidebar__profile">

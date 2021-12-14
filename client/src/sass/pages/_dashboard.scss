@@ -4,8 +4,8 @@
     width: 6rem;
     border-radius: 50%;
     border: none;
-    background-color: $color_seconday_light;
-    color: white;
+    background-color: $color_seconday;
+    color: $color_tertiary;
     left: 95%;
     top: 90%;
     cursor: pointer;
@@ -24,7 +24,7 @@
         transform: translate(-50%);
         input{
             width: 90rem;
-            background-color: $color_tertiary_dark;
+            background-color: $color_tertiary;
             border: none;
             padding: 1.5rem 3rem;
             border-radius: 10px;

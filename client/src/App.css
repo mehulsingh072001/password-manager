@@ -23,7 +23,7 @@ body {
   box-sizing: border-box;
   padding: 0rem;
   font-family: "Poppins";
-  background-color: #F3F3F3; }
+  background-color: #ECECEC; }
   @media (max-width: 56.25em) {
     body {
       padding: 0; } }
@@ -126,6 +126,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 80%; }
+    .addnew__modal .addnew__content {
+      display: flex; }
+      .addnew__modal .addnew__content--credentials button, .addnew__modal .addnew__content--folder button {
+        cursor: pointer;
+        font-family: "Poppins";
+        font-size: 1.953rem;
+        padding: 1rem 2.5rem; }
+        .addnew__modal .addnew__content--credentials button:first-child, .addnew__modal .addnew__content--folder button:first-child {
+          margin-left: 4rem; }
     .addnew__modal form {
       display: grid;
       width: max-content;
@@ -267,8 +276,8 @@ body {
   width: 6rem;
   border-radius: 50%;
   border: none;
-  background-color: #21E6C1;
-  color: white;
+  background-color: #278EA5;
+  color: #F3F3F3;
   left: 95%;
   top: 90%;
   cursor: pointer;
@@ -286,7 +295,7 @@ body {
     transform: translate(-50%); }
     .dashboard .searchbar input {
       width: 90rem;
-      background-color: #ECECEC;
+      background-color: #F3F3F3;
       border: none;
       padding: 1.5rem 3rem;
       border-radius: 10px; }
