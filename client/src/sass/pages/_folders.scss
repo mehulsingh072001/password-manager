@@ -1,0 +1,23 @@
+.container{
+    .folders{
+        right: 0;
+        display: grid;
+        grid-template-columns: repeat(5, max-content);
+        justify-content: space-evenly;
+        margin-top: 8%;
+        width: 88%;
+        position: absolute;
+    &__folder{
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+        background-color: white;
+        padding: 2rem 4rem;
+        color: black;
+        border-radius: 10px;
+        .col-data{
+            margin-left: 2rem;
+        }
+    }
+    }
+}
