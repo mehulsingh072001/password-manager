@@ -54,7 +54,8 @@ router.post('/credentials/:userId',  verify, async (req, res) => {
         // save credentials to database
         const savedCredentials = await credentials.save()
 
-        const folder = await Folders.findOne({"name": req.body.folder})
+        var folderName = req.body.folder.toLowerCase()
+        const folder = await Folders.findOne({"name": folderName})
         const user = await User.findById(id)
 
         folder.credentials.push(savedCredentials._id)

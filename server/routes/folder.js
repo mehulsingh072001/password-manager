@@ -8,7 +8,7 @@ const router = express.Router()
 router.post('/folder/:userId', verify, async (req, res) => {
     const id = req.params.userId
     const folders = new Folders({
-        name: req.body.name
+        name: req.body.name.toLowerCase()
     })
     
     try {
@@ -30,7 +30,7 @@ router.post('/folder/:userId', verify, async (req, res) => {
     }
 })
 
-router.delete('/credentials/:foldId/:userId', verify, async (req, res) => {
+router.delete('/folder/:foldId/:userId', verify, async (req, res) => {
     const id = req.params.userId
     try {
         let folder = await Folders.findById(req.params.foldId) 
