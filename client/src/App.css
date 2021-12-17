@@ -22,7 +22,8 @@ body {
   /* Total borders or paddings are not added to total height of an element */
   box-sizing: border-box;
   padding: 0rem;
-  font-family: "Poppins"; }
+  font-family: "Poppins";
+  background-color: #ECECEC; }
   @media (max-width: 56.25em) {
     body {
       padding: 0; } }
@@ -41,6 +42,28 @@ body {
   margin: 0 1.5rem; }
 
 .new i {
+  font-size: 1.953rem; }
+
+.nav__links--link a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.25rem; }
+
+.sidebar__links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.953rem;
+  font-weight: 300; }
+
+.sidebar__profile .name {
+  color: white;
+  font-size: 1.563rem; }
+
+.folders .col-data {
+  font-size: 1.953rem;
+  font-weight: 400; }
+
+.folders i {
   font-size: 1.953rem; }
 
 .u-heading-2 {
@@ -69,7 +92,7 @@ body {
   margin-top: 1rem !important; }
 
 .cta-register {
-  background-color: #071E3D;
+  background-color: #283845;
   width: 40.7rem;
   padding: 1.5rem 2rem;
   text-align: center;
@@ -79,7 +102,7 @@ body {
   font-family: "Poppins";
   font-weight: 500;
   border-radius: 9px;
-  border: 1px solid #1F4287; }
+  border: 1px solid #278EA5; }
 
 .addnew {
   height: 100vh;
@@ -89,7 +112,8 @@ body {
   z-index: 2; }
   .addnew .cancel {
     position: absolute;
-    left: 90%;
+    left: 60%;
+    top: 20%;
     font-size: 3.815rem;
     background: none;
     border: none;
@@ -102,31 +126,79 @@ body {
     justify-content: center;
     align-items: center;
     height: 80%; }
+    .addnew__modal .addnew__content {
+      display: flex; }
+      .addnew__modal .addnew__content--credentials button, .addnew__modal .addnew__content--folder button, .addnew__modal .addnew__content--csv button {
+        cursor: pointer;
+        font-family: "Poppins";
+        font-size: 1.953rem;
+        padding: 1rem 2.5rem; }
+        .addnew__modal .addnew__content--credentials button:first-child, .addnew__modal .addnew__content--folder button:first-child, .addnew__modal .addnew__content--csv button:first-child {
+          margin-left: 4rem; }
     .addnew__modal form {
       display: grid;
-      width: max-content; }
+      width: max-content;
+      grid-gap: 1rem; }
+      .addnew__modal form input, .addnew__modal form select {
+        width: 30rem;
+        border-radius: 10px;
+        padding: 1rem 2rem; }
+      .addnew__modal form .submit {
+        padding: 1rem 2rem;
+        background-color: #278EA5;
+        border-radius: 10px;
+        border-color: #278EA5;
+        color: white; }
 
 .nav {
-  align-items: center;
-  background-color: #071E3D;
+  background-color: #283845;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem 5rem; }
-  .nav__logo {
-    font-size: 2.441rem;
-    font-weight: 600;
-    color: white; }
-  .nav__search {
-    width: 30%;
-    padding: .8rem 2rem;
-    border-radius: 9px;
-    border: none;
-    font-family: "Poppins";
-    font-weight: 300; }
-  .nav__profile, .nav__logout {
-    color: white;
-    font-size: 3.025rem;
-    margin: 0 1rem; }
+  .nav .logo {
+    width: 15rem; }
+    .nav .logo circle {
+      fill: white; }
+    .nav .logo .cls-1 {
+      fill: #283845; }
+    .nav .logo path {
+      fill: white; }
+  .nav__links {
+    display: flex;
+    list-style: none; }
+    .nav__links--link:not(:first-child) {
+      margin-left: 3rem; }
+
+.sidebar {
+  width: 12%;
+  padding: 4rem 3rem;
+  background-color: #283845;
+  height: 100vh;
+  position: fixed; }
+  .sidebar__logo {
+    width: 90%; }
+    .sidebar__logo path {
+      fill: white; }
+    .sidebar__logo circle {
+      fill: white; }
+    .sidebar__logo .cls-1 {
+      fill: black; }
+  .sidebar__links {
+    position: relative;
+    top: 10%;
+    list-style: none; }
+    .sidebar__links--link:not(:first-child) {
+      margin-top: 2rem; }
+    .sidebar__links--link .fa-key {
+      margin: 0; }
+    .sidebar__links--link i, .sidebar__links--link .fa-key {
+      margin-right: 1rem; }
+  .sidebar__profile {
+    top: 95%;
+    position: absolute; }
+    .sidebar__profile i {
+      margin-right: 1rem; }
 
 .login {
   display: grid;
@@ -152,11 +224,11 @@ body {
       background: #fcfcfc;
       border: 1px solid #b6b6b6; }
     .login__form--submit {
-      background-color: #1F4287;
+      background-color: #278EA5;
       font-weight: 600;
       color: white;
       cursor: pointer;
-      border: 1px solid #1F4287; }
+      border: 1px solid #278EA5; }
   .login .seprator {
     display: flex;
     align-items: center;
@@ -193,7 +265,7 @@ body {
       background: #fcfcfc;
       border: 1px solid #b6b6b6; }
     .registration__form-- {
-      background-color: #1F4287;
+      background-color: #278EA5;
       font-weight: 600;
       color: white;
       cursor: pointer; }
@@ -204,23 +276,62 @@ body {
   width: 6rem;
   border-radius: 50%;
   border: none;
-  background-color: #21E6C1;
-  color: white;
+  background-color: #278EA5;
+  color: #F3F3F3;
   left: 95%;
   top: 90%;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 1; }
 
 .dashboard {
-  padding: 10rem 0;
-  width: 60%;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%); }
+  padding: 3rem 0;
+  width: 88%;
+  height: 100%;
+  right: 0;
+  position: absolute; }
+  .dashboard .searchbar {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%); }
+    .dashboard .searchbar input {
+      width: 90rem;
+      background-color: #F3F3F3;
+      border: none;
+      padding: 1.5rem 3rem;
+      border-radius: 10px; }
   .dashboard .data {
-    background-color: #F6F6F6;
-    padding: 2rem 3rem;
+    position: absolute;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F3F3F3;
     text-align: left;
-    border-radius: 9px;
-    width: 100%; }
+    margin-top: 10rem;
+    border-radius: 10px;
+    width: 70%; }
     .dashboard .data td, .dashboard .data th {
       padding: 1rem; }
+    .dashboard .data button {
+      background-color: transparent;
+      border: none; }
+    .dashboard .data .fa-trash-alt {
+      color: red; }
+
+.container .folders {
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  justify-content: space-evenly;
+  margin-top: 8%;
+  width: 88%;
+  position: absolute; }
+  .container .folders__folder {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    background-color: white;
+    padding: 2rem 4rem;
+    color: black;
+    border-radius: 10px; }
+    .container .folders__folder .col-data {
+      margin-left: 2rem; }

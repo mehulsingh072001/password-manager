@@ -1,11 +1,11 @@
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
-const helmet = require('helmet')
 const cookieParser = require('cookie-parser')
 const userRoute = require('./routes/user')
 const authRoute = require('./routes/auth')
 const credentialsRoute = require('./routes/credentials')
+const folderRoute = require('./routes/folder')
 var bodyParser = require('body-parser');
 
 const app = express()
@@ -26,5 +26,6 @@ app.use('/public', express.static(path.join(cwd, 'public')))
 app.use('/api', userRoute)
 app.use('/api', authRoute)
 app.use('/api', credentialsRoute)
+app.use('/api', folderRoute)
 
 module.exports = app

@@ -1,3 +1,4 @@
+import {useLocation} from 'react-router'
 import {useEffect, useState, useContext} from 'react';
 import Sidebar from '../Components/Sidebar';
 import axios from 'axios'
@@ -5,7 +6,12 @@ import { useCookies } from 'react-cookie';
 import AddNew from '../Components/AddNew';
 import { GlobalContext } from '../GlobalProvider';
 
-function Dashboard() {
+
+function Folder(){
+  const location = useLocation()
+  const path = location.pathname.split('/')[2]
+  console.log(path)
+
   const url = 'http://localhost:5000/api'
   const [cookies, setCookies] = useCookies(['userId, auth'])
   const [cred, setCred] = useState([])
@@ -18,7 +24,14 @@ function Dashboard() {
 
   const data = async () => {
     await axios.get(`${url}/user/${cookies.userId}`, {headers:{Bearer: cookies.auth}})
-      .then((response) => {setCred(response.data.credentials);})
+      .then((response) => {
+        var folders = response.data.folders
+        for(let i=0; folders.length > i; i++){
+          if(folders[i].name.toLowerCase() === path){
+            setCred(folders[i].credentials)
+          }
+        }
+      })
   }
 
   const toggle = () => {
@@ -29,12 +42,16 @@ function Dashboard() {
     await axios.delete(`${url}/credentials/${id}`, {headers: {Bearer: cookies.auth}}).then((res) => console.log(res)).catch((res) => console.log(res))
   }
 
+
   return(
     <div>
       <Sidebar/>
       <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button>
-      {showAdd===true ? <AddNew/> : console.log('null')}
+      {showAdd===true ? <AddNew/> : console.log('')}
       <div className="dashboard">
+      <div className="searchbar">
+        <input type="search" placeholder="Search..."/>
+      </div>
           <table className="data">
             <tr className="u-margin-bottom-big">
               <th className="col-head">For</th>
@@ -59,4 +76,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default Folder

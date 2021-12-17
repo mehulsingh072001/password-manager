@@ -4,29 +4,54 @@
     width: 6rem;
     border-radius: 50%;
     border: none;
-    background-color: $color_seconday_light;
-    color: white;
+    background-color: $color_seconday;
+    color: $color_tertiary;
     left: 95%;
     top: 90%;
     cursor: pointer;
+    z-index: 1;
 }
 
 .dashboard{
-    padding: 10rem 0;
-    width: 60%;
+    padding: 3rem 0;
+    width: 88%;
+    height: 100%;
+    right: 0;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    .searchbar{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        input{
+            width: 90rem;
+            background-color: $color_tertiary;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+        }
+    }
 
 
     .data{
+        position: absolute;
+        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
         background-color: $color_tertiary;
-        padding: 2rem 3rem;
         text-align: left;
-        border-radius: 9px;
-        width: 100%;
+        margin-top: 10rem;
+        border-radius: 10px;
+        width: 70%;
         td, th{
-            padding: 1rem;
+           padding: 1rem;
+        }
+        button{
+            background-color: transparent;
+            border: none;
+        }
+        .fa-trash-alt{
+            color: red;
         }
     }
+
 }

@@ -5,8 +5,6 @@ const bcrypt = require('bcryptjs')
 
 const router = express.Router()
 
-// router.route('/users')
-
 router.get('/users',  verify, async (req, res) => {
     try {
         await User.find().sort({date: -1})
@@ -31,7 +29,7 @@ router.post('/users', async (req, res) => {
 
     try {
         await user.save()
-        return res.status(200).json({
+        return res.status(201).json({
             message: "Successfully signed up!"
         })
     }
@@ -42,14 +40,20 @@ router.post('/users', async (req, res) => {
     }
 })
 
-
 router.get('/user/:userId', verify, async (req, res) => {
     try {
         var id = req.params.userId
         let user = await User.findById(id)
-            .populate('credentials')
+            .populate(
+                {
+                    path: 'folders credentials',
+                    populate: {
+                       path: 'credentials'
+                    }
+                }
+            )
         if(!user){
-            return res.status(400).json({
+            return res.status(404).json({
                 error: "User not found"
             })
         }
@@ -57,18 +61,18 @@ router.get('/user/:userId', verify, async (req, res) => {
     }
     catch(err) {
         return res.status(400).json({
-            error: "Could not retrieve user"
+            error: err
         })
     }
 })
 
-    
-router.delete('/users', verify, async (req, res) => {
+router.delete('/user/:userId', verify, async (req, res) => {
     try {
-        let user = await User.findOne({name: req.body.name}) 
+        const id = req.params.userId
+        let user = await User.findById(kd) 
         let deletedUser = await user.remove()
         deletedUser.password = undefined
-        res.json(deletedUser)
+        res.json(deletedUser).status(201)
     }
     catch(err) {
         return res.status(400).json({
