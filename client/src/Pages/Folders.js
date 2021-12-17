@@ -9,7 +9,8 @@ import {GlobalContext} from '../GlobalProvider'
 function Folders(){
   const url = 'http://localhost:5000/api'
   const [cookies, setCookies] = useCookies(['userId, auth'])
-  const [folders, setFolders] = useState([])
+  const {folders} = useContext(GlobalContext)
+  const [showFolders, setShowFolders] = folders
 
   useEffect(() => {
     data()
@@ -17,14 +18,14 @@ function Folders(){
 
   const data = async () => {
     await axios.get(`${url}/user/${cookies.userId}`, {headers:{Bearer: cookies.auth}})
-      .then((response) => {setFolders(response.data.folders);})
+      .then((response) => {setShowFolders(response.data.folders);})
   }
   
   return(
     <div className="container">
       <Sidebar/>
       <div className="folders">
-        {folders.map(d => 
+        {showFolders.map(d => 
          <NavLink to={`/folders/${d.name.toLowerCase()}`} className="folders__folder">
             <i className="fas fa-folder"></i>
             <p className="folders__folder--name col-data" key={d._id}>{d.name}</p>

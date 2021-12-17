@@ -1,6 +1,6 @@
 import { GlobalContext } from '../GlobalProvider';
 import { useCookies } from 'react-cookie';
-import {useState, useContext} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 
 function AddNew(){
@@ -10,18 +10,23 @@ function AddNew(){
   const [label, setLabel] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [folder, setFolder] = useState('')
   const [fname, setFname] = useState('')
   const [credAdd, setCredAdd] = useState(false)
   const [folderAdd, setFolderAdd] = useState(false)
+  const [csvAdd, setCsvAdd] = useState(false)
   const [showBtn, setShowBtn] = useState(true)
+  const {folders} = useContext(GlobalContext)
+  const [showFolders, setShowFolders] = folders
+  const url = 'http://localhost:5000'
 
   const handleCredSubmit = async(e) => {
     e.preventDefault()
-    const url = 'http://localhost:5000'
     const data = {
       label: label,
       username: username,
-      password: password
+      password: password,
+      folder: folder
     }
     try {
       //make axios post request
@@ -35,7 +40,6 @@ function AddNew(){
 
   const handleFolderSubmit = async(e) => {
     e.preventDefault()
-    const url = 'http://localhost:5000'
     const data = {
       name: fname
     }
@@ -47,6 +51,21 @@ function AddNew(){
     catch(err){
       console.log(err)
     }
+  }
+
+
+  const handleCsvSubmit = async(e) => {
+    //e.preventDefault()
+    //const data = {
+    //  file: fname
+    //}
+    //try {
+    //  //make axios post request
+    //  await axios.post(`${url}/api/folder/${cookies.userId}`, data,  {headers:{Bearer: cookies.auth}}).then(console.log('Success')).catch(err => console.log(err))
+    //}
+    //catch(err){
+    //  console.log(err)
+    //}
   }
 
   const toggle = () => {
@@ -63,6 +82,12 @@ function AddNew(){
     setShowBtn(!showBtn)
   }
 
+  const csvToggle = () => {
+    setCsvAdd(!csvAdd)
+    setShowBtn(!showBtn)
+  }
+
+
   return(
     <div class="addnew">
       <button onClick={toggle} className="cancel">&times;</button>
@@ -76,11 +101,20 @@ function AddNew(){
           <div className="addnew__content--folder">
             {showBtn ? <button onClick={folderToggle}>Folder</button> : console.log(false)}
           </div>
+          <div className="addnew__content--csv">
+            {showBtn ? <button onClick={csvToggle}>CSV</button> : console.log(false)}
+          </div>
           {credAdd ? 
             <form>
               <input type="text" onChange={(e) => setLabel(e.target.value)} placeholder="Label" />
               <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Username/Email" />
               <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+              <select onChange={(e) => setFolder(e.target.value)}  id="" name="">
+                <option value="">None</option>
+                {showFolders.map(d => 
+                   <option value={d.name}>{d.name}</option>
+                )}
+              </select>
               <button className="submit" onClick={handleCredSubmit}>Submit</button>
             </form>
             : console.log('hwllo')
@@ -89,6 +123,13 @@ function AddNew(){
             <form>
               <input type="text" onChange={(e) => setFname(e.target.value)} placeholder="Folder Name" />
               <button className="submit" onClick={handleFolderSubmit}>Submit</button>
+            </form>
+            : console.log('hwllo')
+          }
+          {csvAdd ? 
+            <form>
+              <input type="file" onChange={(e) => setFname(e.target.value)} placeholder="Folder Name" />
+              <button className="submit" onClick={handleCsvSubmit}>Submit</button>
             </form>
             : console.log('hwllo')
           }

@@ -35,9 +35,6 @@ function Dashboard() {
       <button className="new" onClick={toggle}><i className="fas fa-plus"></i></button>
       {showAdd===true ? <AddNew/> : console.log('null')}
       <div className="dashboard">
-      <div className="searchbar">
-        <input type="search" placeholder="Search..."/>
-      </div>
           <table className="data">
             <tr className="u-margin-bottom-big">
               <th className="col-head">For</th>

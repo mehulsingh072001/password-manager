@@ -128,18 +128,18 @@ body {
     height: 80%; }
     .addnew__modal .addnew__content {
       display: flex; }
-      .addnew__modal .addnew__content--credentials button, .addnew__modal .addnew__content--folder button {
+      .addnew__modal .addnew__content--credentials button, .addnew__modal .addnew__content--folder button, .addnew__modal .addnew__content--csv button {
         cursor: pointer;
         font-family: "Poppins";
         font-size: 1.953rem;
         padding: 1rem 2.5rem; }
-        .addnew__modal .addnew__content--credentials button:first-child, .addnew__modal .addnew__content--folder button:first-child {
+        .addnew__modal .addnew__content--credentials button:first-child, .addnew__modal .addnew__content--folder button:first-child, .addnew__modal .addnew__content--csv button:first-child {
           margin-left: 4rem; }
     .addnew__modal form {
       display: grid;
       width: max-content;
       grid-gap: 1rem; }
-      .addnew__modal form input {
+      .addnew__modal form input, .addnew__modal form select {
         width: 30rem;
         border-radius: 10px;
         padding: 1rem 2rem; }
