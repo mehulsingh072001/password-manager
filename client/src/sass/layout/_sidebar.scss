@@ -1,0 +1,44 @@
+.sidebar{
+    width: 12%;
+    padding: 4rem 3rem;
+    background-color: $color_primary;
+    height: 100vh;
+    position: fixed;
+    &__logo{
+        width: 90%;
+        path{
+            fill: white;
+        }
+        circle{
+            fill: white;
+        }
+        .cls-1{
+            fill: black;
+        }
+    }
+
+    &__links{
+        position: relative;
+        top: 10%;
+        list-style: none;
+        &--link{
+            &:not(:first-child){
+                margin-top: 2rem;
+            }
+            .fa-key{
+                margin: 0;
+            }
+            i, .fa-key{
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    &__profile{
+        top: 95%;
+        position: absolute;
+        i{
+            margin-right: 1rem;
+        }
+    }
+}

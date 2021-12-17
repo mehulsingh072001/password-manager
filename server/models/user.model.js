@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
     },
+    folders: [{type: mongoose.Schema.Types.ObjectId, ref: "folders"}],
     credentials: [{type: mongoose.Schema.Types.ObjectId, ref: "credentials"}]
 })
 

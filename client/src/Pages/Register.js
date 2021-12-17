@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import Nav from '../Components/Nav'
 
 function Register(){
   const [username, setUsername] = useState('')
@@ -25,13 +26,16 @@ function Register(){
   }
 
   return(
-    <div className="registration">
-      <form className="registration__form" action="">
-        <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-        <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-        <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
-        <button onClick={handleSubmit} className="cta-register">Sign Up</button>
-      </form>
+    <div>
+      <Nav/>
+      <div className="registration">
+        <form className="registration__form" action="">
+          <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+          <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+          <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
+          <button onClick={handleSubmit} className="cta-register">Sign Up</button>
+        </form>
+      </div>
     </div>
   )
 }

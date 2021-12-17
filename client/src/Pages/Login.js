@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import {useCookies} from 'react-cookie'
-import { GlobalContext } from '../GlobalProvider'
+import Nav from '../Components/Nav'
 
 function Login(){
   let navigate = useNavigate()
@@ -22,20 +22,28 @@ function Login(){
       email: username,
       password: password
     }
-    try {
-      //make axios post request
-      await axios.post(`${url}/api/login`, data)
-        .then(res => handleCookie(res.data.token, res.data.id), setCookies("isAuthenticated", true, {path: "/"}), navigate('/'))
-        .catch(err => console.log(err));
+    //make axios post request
+    await axios.post(`${url}/api/login`, data)
+      .then(res => {
+        if(res.status===200){
+          handleCookie(res.data.token, res.data.id);
+          setCookies("isAuthenticated", true, {path: "/"});
+          navigate('/')
+        }
+        else{
+          console.log('Auth Failed')
+        }
+      }).catch((err) => {
+        if(err.response.status===404){
+          alert("User not Found")
+        }
+      })
+      
     }
-
-    catch(err){
-      console.log(err)
-    }
-  }
 
   return(
     <div>
+      <Nav/>
       <div className="login">
         <form className="login__form">
           <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Username or Email"/>

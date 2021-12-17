@@ -6,7 +6,8 @@
     z-index: 2;
     .cancel{
         position: absolute;
-        left: 90%;
+        left: 60%;
+        top: 20%;
         font-size: 3.815rem;
         background: none;
         border: none;
@@ -21,9 +22,41 @@
         align-items: center;
         height: 80%;
 
+        .addnew{
+            &__content{
+                display: flex;
+                &--credentials, &--folder{
+                    button{
+                        &:first-child{
+                            margin-left: 4rem;
+                        }
+                        cursor: pointer;
+                        font-family: $font_body;
+                        font-size: 1.953rem;
+                        padding: 1rem 2.5rem;
+                    }
+                }
+            }
+        }
+
         form{
             display: grid;
             width: max-content;
+            grid-gap: 1rem;
+            input{
+                width: 30rem;
+                border-radius: 10px;
+                padding: 1rem 2rem;
+            }
+                .submit{
+                    padding: 1rem 2rem;
+                    background-color: $color_seconday;
+                    border-radius: 10px;
+                    border-color: $color_seconday;
+                    color: white;
+                }
+
+
         }
     }
 }

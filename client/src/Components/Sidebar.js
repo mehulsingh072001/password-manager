@@ -1,18 +1,9 @@
-import {useCookies} from 'react-cookie'
+import {NavLink, Link} from "react-router-dom"
 
-function Nav(){
-  const [cookies, setCookies, removeCookies] = useCookies(["isAuthenticated"])
-  const destroyAuth = (e) => {
-    removeCookies('isAuthenticated')
-  }
+function Sidebar(){
   return(
-    <nav className="nav">
-      <ul className="nav__links">
-        <li className="nav__links--link"><a href="">Pricing</a></li>
-        <li className="nav__links--link"><a href="">Downloads</a></li>
-      </ul>
-
-      <svg className="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 916.09 245.31">
+    <div className="sidebar">
+      <svg className="sidebar__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 916.09 245.31">
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
             <path d="M84.52,179.37a70.31,70.31,0,0,0,45-15.72,70,70,0,0,0,25.28-39.45h12.42a82.54,82.54,0,0,1-29,48,82.09,82.09,0,0,1-53.63,19.23q-34.95,0-59.79-24.84T0,106.94Q0,72,24.73,47.26T84.52,22.42a82,82,0,0,1,53.63,19.24,82.49,82.49,0,0,1,29,48H154.75a70,70,0,0,0-25.28-39.45A70.31,70.31,0,0,0,84.52,34.51q-30,0-51.22,21.21T12.09,106.94q0,30,21.21,51.22T84.52,179.37Z"/>
@@ -23,18 +14,22 @@ function Nav(){
             <path d="M729.35,181.46a62.23,62.23,0,0,1-77.05-8.57Q634,154.64,634,129V0h12.2V28.25h83.2V40.34h-83.2V129a49.89,49.89,0,0,0,83.2,37.15Z"/>
             <path d="M916.09,28.25V162.44q-.45,33.75-24.84,58-24.74,24.83-59.69,24.83t-59.79-24.83a83.18,83.18,0,0,1-9.34-10.78l9.56-7.58a89.86,89.86,0,0,0,8.36,10q21.21,21,51.21,21t51.22-21Q904,190.81,904,162v-8.24a80,80,0,0,1-28.36,27.37,77.81,77.81,0,0,1-39.13,10.33q-33,0-56.38-23.3t-23.3-56.27V28.25h12.09v83.64q0,27.92,19.78,47.7t47.81,19.89q27.81,0,47.59-19.78T904,112V28.25Z"/>
             <circle cx="87.32" cy="106.61" r="27.57"/>
-            <circle class="cls-1" cx="77.62" cy="105.59" r="11.57"/>
+            <circle className="cls-1" cx="77.62" cy="105.59" r="11.57"/>
           </g>
         </g>
       </svg>
 
-      <ul className="nav__links">
-        <li className="nav__links--link"><a href="">Terms Of Use</a></li>
-        <li className="nav__links--link"><a href="">Privacy Policy</a></li>
+      <ul className="sidebar__links">
+        {/* <li className="sidebar__links--link"><a href=""><i class="fas fa-history"></i>Recent</a></li> */}
+        <li className="sidebar__links--link"><Link to="/"><i class="fas fa-key"></i>Passwords</Link></li>
+        <li className="sidebar__links--link"><Link to="/folders"><i class="fas fa-folder"></i>Folders</Link></li>
       </ul>
 
-    </nav>
+      <div className="sidebar__profile">
+        <p className="name"><i class="far fa-user-circle"></i>Mehul</p>
+      </div>
+    </div>
   )
 }
 
-export default Nav
+export default Sidebar
