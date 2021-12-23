@@ -1,23 +1,26 @@
-// console.log(pass)
 function card(email, password) {
     const card = document.createElement("DIV")
     card.classList.add('card') 
     document.body.appendChild(card)
-
-    card.style.position = "absolute"
-    card.style.width = "200px"
-    card.style.height = "200px"
-    card.style.left = "88%"
-    card.style.top = "0%"
-    card.style.backgroundColor = "red"
 
     const form = document.createElement("FORM")
     form.classList.add('form')
     card.appendChild(form)
     form.style.position = "absolute"
 
+//    //For Input
+//    const forInput = document.createElement("INPUT")
+//    forInput.classList.add('input')
+//    forInput.type = "email"
+//    forInput.placeholder = "Email"
+//    forInput.classList.add('email')
+//    forInput.value = email
+//    forInput.innerText = email
+//    form.appendChild(forInput)
+
     //Email Input
     const emailInput = document.createElement("INPUT")
+    emailInput.classList.add('input')
     emailInput.type = "email"
     emailInput.placeholder = "Email"
     emailInput.classList.add('email')
@@ -27,6 +30,7 @@ function card(email, password) {
 
     //Password Input
     const passwordInput = document.createElement("INPUT")
+    passwordInput.classList.add('input')
     passwordInput.type = "password"
     passwordInput.placeholder = "Password"
     passwordInput.classList.add('password')
@@ -35,6 +39,7 @@ function card(email, password) {
     form.appendChild(passwordInput)
 
     const submitBtn = document.createElement("BUTTON")
+    submitBtn.classList.add('submit')
     submitBtn.innerText = "Submit"
     submitBtn.addEventListener("click", function(e){
         e.preventDefault()
@@ -43,9 +48,7 @@ function card(email, password) {
     form.appendChild(submitBtn)
 }
 
-var ary = [];
 var inputs = document.querySelectorAll("input");
-
 for (var i=0; i<inputs.length; i++){
     if(inputs[i].type.toLowerCase() === "password"){
         let pass
