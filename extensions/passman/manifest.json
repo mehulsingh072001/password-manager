@@ -8,8 +8,8 @@
  "content_scripts": [
    {
      "matches": ["<all_urls>"],
-     "css": ["background.css"],
-     "js": ["background.js"]
+     "css": ["content.css"],
+     "js": ["content-scripts.js"]
    }
  ],
  "browser_action": {

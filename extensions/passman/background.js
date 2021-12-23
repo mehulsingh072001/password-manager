@@ -8,6 +8,11 @@ for (var i=0; i<inputs.length; i++){
         }
         inputs[i].onchange = (e) => {
             console.log(e.target.value)
+
+          chrome.runtime.onMessage.addListener((message, sender, response) => {
+            // Do stuff in your document.
+            document.body.style.backgroundColor = message.backgroundColor;
+          });
         }
     }
     // else if(inputs[i].type.toLowerCase() === "password"){
