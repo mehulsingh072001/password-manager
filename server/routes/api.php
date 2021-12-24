@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FoldersController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +25,10 @@ Route::get('/users', [UserController::class, 'index']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [UserController::class, 'logout']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
+    Route::get('/folders/{userId}', [FoldersController::class, 'index']);
+    Route::get('/folders/{userId}/{folderId}', [FoldersController::class, 'show']);
+    Route::delete('/folders/{userId}/{folderId}', [FoldersController::class, 'destroy']);
+    Route::post('/folders/{userId}', [FoldersController::class, 'store']);
+    Route::put('/folders/{userId}/{folderId}', [FoldersController::class, 'update']);
 });
 

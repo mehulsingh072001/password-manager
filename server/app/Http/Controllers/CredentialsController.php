@@ -24,7 +24,7 @@ class CredentialsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
