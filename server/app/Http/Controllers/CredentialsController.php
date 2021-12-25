@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Folders;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CredentialsController extends Controller
@@ -11,9 +13,17 @@ class CredentialsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function cred($userId)
     {
-        //
+        $user = User::find($userId);
+        return $user->credentials;
+    }
+
+    public function folderCred($userId,$folderId)
+    {
+        $user = User::find($userId);
+        $folder = $user->folders()->find($folderId);
+        return $folder->credentials;
     }
 
     /**
@@ -22,9 +32,32 @@ class CredentialsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $userId, $folderId)
     {
+        $data = $request->validate([
+            'label' => 'required',
+            'username' => 'required',
+            'password' => 'required'
+        ]);
 
+        if($request->folder){
+            $folder = Folders::find($folderId);
+            $credf = $folder->credentials()->create($data);
+
+            $user = User::find($userId);
+            $credu = $user->credentials()->create($data);
+
+            $response = [
+                'f' => $credf,
+                'u' => $credu
+            ];
+            return response($response);
+        }
+        else{
+            $user = User::find($userId);
+            $cred = $user->credentials()->create($data);
+            return response($cred);
+        }
     }
 
     /**
@@ -56,8 +89,25 @@ class CredentialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    /* public function destroy($id) */
+    /* { */
+    /*     if($request->folder){ */
+    /*         $folder = Folders::find($folderId); */
+    /*         $credf = $folder->credentials()->create($data); */
+
+    /*         $user = User::find($userId); */
+    /*         $credu = $user->credentials()->create($data); */
+
+    /*         $response = [ */
+    /*             'f' => $credf, */
+    /*             'u' => $credu */
+    /*         ]; */
+    /*         return response($response); */
+    /*     } */
+    /*     else{ */
+    /*         $user = User::find($userId); */
+    /*         $cred = $user->credentials()->create($data); */
+    /*         return response($cred); */
+    /*     } */
+    /* } */
 }

@@ -17,4 +17,9 @@ class Folders extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function credentials()
+    {
+        return $this->hasMany(Credentials::class);
+    }
 }

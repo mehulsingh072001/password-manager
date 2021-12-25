@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CredentialsController;
 use App\Http\Controllers\FoldersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -30,5 +31,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/folders/{userId}/{folderId}', [FoldersController::class, 'destroy']);
     Route::post('/folders/{userId}', [FoldersController::class, 'store']);
     Route::put('/folders/{userId}/{folderId}', [FoldersController::class, 'update']);
+
+    //credentials
+    Route::get('/credentials/{userId}', [CredentialsController::class, 'cred']);
+    Route::get('/credentials/folder/{userId}/{folderId}', [CredentialsController::class, 'folderCred']);
+    Route::post('/credentials/{userId}/{folderId}', [CredentialsController::class, 'store']);
 });
 
