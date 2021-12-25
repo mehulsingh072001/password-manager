@@ -89,14 +89,16 @@ class CredentialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /* public function destroy($id) */
+    /* public function destroy(Request $request, $userId, $folderId, $credId) */
     /* { */
     /*     if($request->folder){ */
     /*         $folder = Folders::find($folderId); */
-    /*         $credf = $folder->credentials()->create($data); */
+    /*         $credf = $folder->credentials()->find($credId); */
+    /*         $credf->delete(); */
 
     /*         $user = User::find($userId); */
-    /*         $credu = $user->credentials()->create($data); */
+    /*         $credu = $user->credentials()->find($credId); */
+    /*         /1* $credu->delete; *1/ */
 
     /*         $response = [ */
     /*             'f' => $credf, */
@@ -105,9 +107,14 @@ class CredentialsController extends Controller
     /*         return response($response); */
     /*     } */
     /*     else{ */
+    /*         /1* $user = User::find($userId); *1/ */
+    /*         /1* $cred = $user->credentials()->create($data); *1/ */
+    /*         /1* return response($cred); *1/ */
     /*         $user = User::find($userId); */
-    /*         $cred = $user->credentials()->create($data); */
+    /*         $cred = $user->credentials()->find($credId); */
+    /*         $cred->delete(); */
     /*         return response($cred); */
+
     /*     } */
     /* } */
 }

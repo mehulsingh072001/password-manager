@@ -36,5 +36,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/credentials/{userId}', [CredentialsController::class, 'cred']);
     Route::get('/credentials/folder/{userId}/{folderId}', [CredentialsController::class, 'folderCred']);
     Route::post('/credentials/{userId}/{folderId}', [CredentialsController::class, 'store']);
+    Route::delete('/credentials/{userId}/{folderId}/{credId}', [CredentialsController::class, 'destroy']);
 });
 
