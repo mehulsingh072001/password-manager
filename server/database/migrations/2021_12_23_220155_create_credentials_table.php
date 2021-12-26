@@ -15,11 +15,11 @@ class CreateCredentialsTable extends Migration
     {
         Schema::create('credentials', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('folders_id')->unsigned()->nullable();
+            $table->string('url');
             $table->string('label');
             $table->string('username');
             $table->string('password');
+            $table->integer('folders_id')->unsigned();
             $table->timestamps();
         });
     }

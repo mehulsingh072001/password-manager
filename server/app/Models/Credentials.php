@@ -11,14 +11,11 @@ class Credentials extends Model
 
     protected $fillable = [
         'label',
+        'url',
         'username',
-        'password'
+        'password',
+        'folder',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 
     public function folders()
     {

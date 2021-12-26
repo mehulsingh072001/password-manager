@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Credentials;
 use App\Models\Folders;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,8 +16,8 @@ class CredentialsController extends Controller
      */
     public function cred($userId)
     {
-        $user = User::find($userId);
-        return $user->credentials;
+        $user = Credentials::find($userId);
+        return $user->folders->credentials;
     }
 
     public function folderCred($userId,$folderId)
@@ -32,32 +33,41 @@ class CredentialsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $userId, $folderId)
+    public function store(Request $request, $folderId)
     {
         $data = $request->validate([
             'label' => 'required',
+            'url' => 'required',
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        if($request->folder){
             $folder = Folders::find($folderId);
             $credf = $folder->credentials()->create($data);
 
-            $user = User::find($userId);
-            $credu = $user->credentials()->create($data);
-
             $response = [
-                'f' => $credf,
-                'u' => $credu
+                'f' => $credf
             ];
             return response($response);
-        }
-        else{
-            $user = User::find($userId);
-            $cred = $user->credentials()->create($data);
-            return response($cred);
-        }
+    }
+    public function import(){
+        $file = storage_path('app/public/logins.csv'); //--> laravel helper, but you can use any path here
+
+        // file() loads each row as an array value, then array map uses the 'str_getcsv' callback to 
+          $csv = array_map('str_getcsv', file($file)); 
+
+        //  array_walk - "walks" through each item of the array and applies the call back function. the & in "&row" means that alterations to $row actually change the original $csv array, rather than treating it as immutable (*sort of immutable...)
+          array_walk($csv, function(&$row) use ($csv) {
+         
+            // array_combine takes the header row ($csv[0]) and uses it as array keys for each column in the row
+            $row = array_combine($csv[0], $row); 
+          });
+          
+        array_shift($csv); # removes now very redundant column header --> contains {'col_1':'col_1', 'col_2':'col_2'...}
+        $json = json_encode($csv);
+
+        return $json;
+
     }
 
     /**
@@ -66,9 +76,8 @@ class CredentialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
     }
 
     /**
@@ -78,9 +87,14 @@ class CredentialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $userId, $folderId, $credId)
     {
         //
+        $user = User::find($userId);
+        $folder = $user->folders()->find($folderId);
+        $credentials = $folder->credentials()->find($credId);
+        $credentials->update($request->all());
+        return response($credentials);
     }
 
     /**
@@ -89,32 +103,18 @@ class CredentialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /* public function destroy(Request $request, $userId, $folderId, $credId) */
-    /* { */
-    /*     if($request->folder){ */
-    /*         $folder = Folders::find($folderId); */
-    /*         $credf = $folder->credentials()->find($credId); */
-    /*         $credf->delete(); */
+    public function destroy(Request $request, $userId, $folderId, $credId)
+    {
+            $user = User::find($userId);
+            $folder = $user->folders()->find($folderId);
+            $credf = $folder->credentials()->find($credId);
+            $credf->delete();
 
-    /*         $user = User::find($userId); */
-    /*         $credu = $user->credentials()->find($credId); */
-    /*         /1* $credu->delete; *1/ */
 
-    /*         $response = [ */
-    /*             'f' => $credf, */
-    /*             'u' => $credu */
-    /*         ]; */
-    /*         return response($response); */
-    /*     } */
-    /*     else{ */
-    /*         /1* $user = User::find($userId); *1/ */
-    /*         /1* $cred = $user->credentials()->create($data); *1/ */
-    /*         /1* return response($cred); *1/ */
-    /*         $user = User::find($userId); */
-    /*         $cred = $user->credentials()->find($credId); */
-    /*         $cred->delete(); */
-    /*         return response($cred); */
+            $response = [
+                'f' => $credf
+            ];
+            return response($response);
+    }
 
-    /*     } */
-    /* } */
 }
