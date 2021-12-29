@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie as FacadesCookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response as FacadesResponse;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -27,12 +31,10 @@ class UserController extends Controller
         ]);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-        return response($response, 201);
+        $cookie = FacadesCookie::make('auth_token', $token, 3600);
+        $response = FacadesResponse::json(['auth_token' => $token, 200, 'user' => $user]);
+        $response->headers->setCookie($cookie);
+        return $response;
     }
 
     public function login(Request $request){

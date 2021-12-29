@@ -17,7 +17,7 @@ function Login(){
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    const url = 'http://localhost:5000'
+    const url = 'http://localhost:8000'
     const data = {
       email: username,
       password: password
@@ -25,8 +25,8 @@ function Login(){
     //make axios post request
     await axios.post(`${url}/api/login`, data)
       .then(res => {
-        if(res.status===200){
-          handleCookie(res.data.token, res.data.id);
+        if(res.status===201){
+          handleCookie(res.data.token, res.data.user.id);
           setCookies("isAuthenticated", true, {path: "/"});
           navigate('/')
         }

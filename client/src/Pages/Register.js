@@ -9,15 +9,19 @@ function Register(){
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    const url = 'http://localhost:5000'
+    const url = 'http://localhost:8000'
     const data = {
-      username: username,
+      name: username,
       email: email,
-      password: password
+      password: password,
+      password_confirmation: password
+    }
+    const headers = {
+      'Accept': 'application/json'
     }
     try {
       //make axios post request
-      await axios.post(`${url}/api/users`, data).then()
+      await axios.post(`${url}/api/register`, data, headers).then()
     }
 
     catch(err){

@@ -50,7 +50,8 @@ class CredentialsController extends Controller
             ];
             return response($response);
     }
-    public function import(){
+    public function loadCsv($folderId){
+        $folder = Folders::find($folderId);
         $file = storage_path('app/public/logins.csv'); //--> laravel helper, but you can use any path here
 
         // file() loads each row as an array value, then array map uses the 'str_getcsv' callback to 
@@ -66,8 +67,29 @@ class CredentialsController extends Controller
         array_shift($csv); # removes now very redundant column header --> contains {'col_1':'col_1', 'col_2':'col_2'...}
         $json = json_encode($csv);
 
-        return $json;
+        $data = json_decode($json, true);
+        foreach($data as $url){
+            $username = json_encode($url['username']);
+            $password = json_encode($url['password']);
+            $url = json_encode($url['url']);
 
+            $credf = $folder->credentials()->create(['username' => $username, 'url' => $url, 'password' => $password]);
+        }
+        /* for($i=0; $i < sizeof($data); $i++){ */
+        /*     $url = $data[$i]['url']; */
+        /*     $username = $data[$i]['username']; */
+        /*     $password = $data[$i]['password']; */
+        /*     $a = [ */
+        /*         $username, $password, $url */
+        /*     ]; */
+        /*     $credf = $folder->credentials()->create($a); */
+        /* } */
+        /* array_push($arr, $a); */
+
+        $response = [
+            'f' => $credf
+        ];
+        return $response;
     }
 
     /**
