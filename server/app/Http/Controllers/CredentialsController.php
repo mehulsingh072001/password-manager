@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Helper;
+use App\Helpers\csvToJson;
 use App\Models\Credentials;
 use App\Models\Folders;
 use App\Models\User;
@@ -53,7 +54,10 @@ class CredentialsController extends Controller
     }
     public function loadCsv($folderId){
         $file = storage_path('app/public/logins.csv'); //--> laravel helper, but you can use any path here
-        return helloWorldHelper($file);
+        return csvToJson::convert($file);
+    }
+
+    public function selectFields(){
     }
 
     /**
